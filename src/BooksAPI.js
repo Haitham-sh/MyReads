@@ -12,21 +12,12 @@ const headers = {
 export const get = (bookId) =>
   fetch(`${api}/books/${bookId}`, { headers })
     .then((res) => res.json())
-        .then((data) => {
-            const book = data.book;
-            console.log(book);
-            return book
-        })
+    .then((data) => data.book);
 
 export const getAll = () =>
   fetch(`${api}/books`, { headers })
     .then((res) => res.json())
-        .then((data) => {
-            const books = data.books;
-            console.log(books);
-            console.log(books[0].shelf);
-            return books
-        })
+    .then((data) => data.books);
 
 export const update = (book, shelf) =>
   fetch(`${api}/books/${book.id}`, {
@@ -48,8 +39,4 @@ export const search = (query, maxResults) =>
     body: JSON.stringify({ query, maxResults }),
   })
     .then((res) => res.json())
-    .then((data) => {
-        const books = data.books;
-        console.log(books);
-        return books
-    })
+    .then((data) => data.books);
