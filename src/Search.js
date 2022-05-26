@@ -18,6 +18,8 @@ function Search() {
           alert("Empty try something else");
         }
       });
+    } else {
+      setBooks([]);
     }
   }, [query]);
 
