@@ -12,7 +12,11 @@ const headers = {
 export const get = (bookId) =>
   fetch(`${api}/books/${bookId}`, { headers })
     .then((res) => res.json())
-        .then((data) => data.book);
+        .then((data) => {
+            const book = data.book;
+            console.log(book);
+            return book
+        })
 
 export const getAll = () =>
   fetch(`${api}/books`, { headers })
@@ -20,7 +24,7 @@ export const getAll = () =>
         .then((data) => {
             const books = data.books;
             console.log(books);
-            console.log(books[0]);
+            console.log(books[0].shelf);
             return books
         })
 
@@ -44,4 +48,8 @@ export const search = (query, maxResults) =>
     body: JSON.stringify({ query, maxResults }),
   })
     .then((res) => res.json())
-    .then((data) => data.books);
+    .then((data) => {
+        const books = data.books;
+        console.log(books);
+        return books
+    })

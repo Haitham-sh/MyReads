@@ -15,7 +15,9 @@ function App() {
           exact path="/search"
           element={<Search />}>
       </Route>
-    </Routes>
+      </Routes>
+      
+      
   );
 }
 
