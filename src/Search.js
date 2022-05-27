@@ -8,19 +8,21 @@ function Search({ updateShelf, shelfedOrNot }) {
   const [query, setQuery] = useState("");
   const [books, setBooks] = useState([]);
 
-  useEffect(() => {
-    if (query.trim().length !== 0) {
-      BooksAPI.search(query.trim()).then((books) => {
-        if (books.error !== "empty query") {
-          setBooks(books);
-        } else {
-          setBooks([]);
-          alert("Empty try something else");
-        }
-      });
-    } else {
-      setBooks([]);
-    }
+    useEffect(() => {
+        const delay = setTimeout(() => {
+            if (query.trim().length !== 0) {
+            BooksAPI.search(query.trim()).then((books) => {
+              if (books.error !== "empty query") {
+                setBooks(books);
+              } else {
+                setBooks([]);
+                alert("Empty try something else");
+              }
+            });
+          } else {
+            setBooks([]);
+          }},50);
+        return () => clearTimeout(delay);
   }, [query]);
 
   return (
