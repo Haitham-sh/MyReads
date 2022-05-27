@@ -24,13 +24,9 @@ function App() {
     });
   };
 
-  console.log(books);
-
   const shelfedOrNot = (book) => {
     const test = books.filter((b) => b.id === book.id);
-    console.log(test);
     if (test.length > 0) {
-      console.log(test[0].shelf);
       return test[0].shelf;
     } else {
       return "none";
