@@ -1,12 +1,17 @@
 import React from "react";
 import BookDetails from "./BookDetails";
 
-function BookShelf({ books, shelfB, updateShelf }) {
+function BookShelf({ books, shelfB, updateShelf, shelfedOrNot }) {
   return (
     <div className="bookshelf">
       <h2 className="bookshelf-title">{shelfB.name}</h2>
       <div className="bookshelf-books">
-        <BookDetails books={books} shelfB={shelfB} updateShelf={updateShelf} />
+        <BookDetails
+          books={books}
+          shelfB={shelfB}
+          updateShelf={updateShelf}
+          shelfedOrNot={shelfedOrNot}
+        />
       </div>
     </div>
   );

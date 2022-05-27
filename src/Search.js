@@ -4,7 +4,7 @@ import BookDetails from "./BookDetails";
 import { useState, useEffect } from "react";
 import * as BooksAPI from "./BooksAPI";
 
-function Search() {
+function Search({ updateShelf, shelfedOrNot }) {
   const [query, setQuery] = useState("");
   const [books, setBooks] = useState([]);
 
@@ -23,16 +23,6 @@ function Search() {
     }
   }, [query]);
 
-  const updateShelf = (book, Shelf) => {
-    BooksAPI.update(book, Shelf).then(() => {
-      book.shelf = Shelf;
-      const bookChang = books
-        .filter((bookCh) => bookCh.id !== book.id)
-        .concat([book]);
-      setBooks([...bookChang]);
-    });
-  };
-
   return (
     <div className="search-books">
       <div className="search-books-bar">
@@ -49,7 +39,12 @@ function Search() {
         </div>
       </div>
       <div className="search-books-results">
-        <BookDetails books={books} shelfB="none" updateShelf={updateShelf} />
+        <BookDetails
+          books={books}
+          shelfB="none"
+          updateShelf={updateShelf}
+          shelfedOrNot={shelfedOrNot}
+        />
       </div>
     </div>
   );

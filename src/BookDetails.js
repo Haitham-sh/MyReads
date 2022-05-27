@@ -1,6 +1,6 @@
 import React from "react";
 
-function BookDetails({ books, shelfB, updateShelf }) {
+function BookDetails({ books, shelfB, updateShelf, shelfedOrNot }) {
   return (
     <ol className="books-grid">
       {books
@@ -19,10 +19,12 @@ function BookDetails({ books, shelfB, updateShelf }) {
                 ></div>
                 <div className="book-shelf-changer">
                   <select
-                    value={shelfB.value}
-                    onChange={(event) => updateShelf(book, event.target.value)}
+                    value={shelfedOrNot(book)}
+                    onChange={(event) => {
+                      updateShelf(book, event.target.value);
+                    }}
                   >
-                    <option value="none" disabled>
+                    <option value="move" disabled>
                       Move to...
                     </option>
                     <option value="currentlyReading">Currently Reading</option>

@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import * as BooksAPI from "./BooksAPI";
 import BookShelf from "./BookShelf";
 
-function Home() {
+function Home({ updateShelf, shelfedOrNot, books }) {
   const shelfs = [
     {
       name: "Currently Reading",
@@ -20,24 +18,6 @@ function Home() {
     },
   ];
 
-  const [books, setBooks] = useState([]);
-
-  useEffect(() => {
-    BooksAPI.getAll().then((books) => {
-      setBooks(books);
-    });
-  }, []);
-
-  const updateShelf = (book, Shelf) => {
-    BooksAPI.update(book, Shelf).then(() => {
-      book.shelf = Shelf;
-      const bookChang = books
-        .filter((bookCh) => bookCh.id !== book.id)
-        .concat([book]);
-      setBooks([...bookChang]);
-    });
-  };
-
   return (
     <div className="app">
       <div className="list-books">
@@ -52,6 +32,7 @@ function Home() {
                   books={books}
                   shelfB={shelfB}
                   updateShelf={updateShelf}
+                  shelfedOrNot={shelfedOrNot}
                 />
               </div>
             ))}
