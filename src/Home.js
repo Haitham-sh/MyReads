@@ -5,16 +5,16 @@ import BookShelf from "./BookShelf";
 function Home({ updateShelf, shelfedOrNot, books }) {
   const shelfs = [
     {
-      name: "Currently Reading",
-      value: "currentlyReading",
+      value: "Currently Reading",
+      name: "currentlyReading",
     },
     {
-      name: "Want to Read",
-      value: "wantToRead",
+      value: "Want to Read",
+      name: "wantToRead",
     },
     {
-      name: "Read",
-      value: "read",
+      value: "Read",
+      name: "read",
     },
   ];
 
@@ -26,11 +26,11 @@ function Home({ updateShelf, shelfedOrNot, books }) {
         </div>
         <div className="list-books-content">
           <div>
-            {shelfs.map((shelfB) => (
-              <div key={shelfB.name}>
+            {shelfs.map((shelf) => (
+              <div key={shelf.name}>
                 <BookShelf
                   books={books}
-                  shelfB={shelfB}
+                  shelf={shelf}
                   updateShelf={updateShelf}
                   shelfedOrNot={shelfedOrNot}
                 />

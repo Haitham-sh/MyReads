@@ -53,7 +53,7 @@ function App() {
           <Search
             shelfedOrNot={shelfedOrNot}
             updateShelf={updateShelf}
-            books={books}
+            booksx={books}
           />
         }
       ></Route>
