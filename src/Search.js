@@ -39,7 +39,7 @@ function Search({ updateShelf, shelfedOrNot, booksx }) {
             setBooks([...books]);
           } else {
             setBooks([]);
-            alert("Empty try something else");
+            alert("Sorry a Book Not Found");
           }
         });
       } else {
